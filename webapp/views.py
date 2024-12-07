@@ -38,9 +38,10 @@ def login(request):
                 auth.login(request, user)
                 messages.success(request, 'Logged in successfully')
                 return redirect("user-dashboard")
-    context = {'form':form}
+            else:
+                messages.error(request, 'Details are incorrect')
+    context = {'form': form}
     return render(request, 'webapp/user-login.html', context=context)
-
 
 # User logout
 def logout(request):
